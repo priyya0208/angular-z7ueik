@@ -10,9 +10,9 @@ import { Http } from '@angular/http';
 export class RegistrationComponent implements OnInit {
 
   constructor(private userService : UserService) { }
-
+  
   ngOnInit() {
-   
+    
   }
   onClickSubmit(data) {
      this.userService.postUser(data)
