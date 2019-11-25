@@ -17,8 +17,7 @@ export class RegistrationComponent implements OnInit {
   };
   
   ngOnInit() {
-    this.subscription = this.userService.getMessage().subscribe(message => { this.message = JSON.stringify(message);
-    console.log("Message:::::::::::::",this.message.text) });
+    this.subscription = this.userService.getMessage().subscribe(message => { this.message = message;console.log("Message:::::::::::::",this.message.text) });
   }
   onClickSubmit(data) {
      this.userService.postUser(data)
