@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { UserService } from '../user.service';
 import { Http } from '@angular/http';
@@ -8,8 +9,12 @@ import { Http } from '@angular/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+    message: any;
+    subscription: Subscription;
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService) { 
+    this.subscription = this.userService.getMessage().subscribe(message => { message = message;console.log("Message:::::::::::::",message) });
+  }
   
   ngOnInit() {
     

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { UserService } from '../user.service';
 import { Http } from '@angular/http';
@@ -8,7 +8,8 @@ import { Http } from '@angular/http';
   styleUrls: ['./user-view.component.css']
 })
 export class UserViewComponent implements OnInit {
-@Output() updateRowData = new EventEmitter();
+
+
   constructor(private userService : UserService) { }
   
   ngOnInit() {
@@ -17,8 +18,11 @@ export class UserViewComponent implements OnInit {
           console.log(this.users);
     })    
   };
-  updateRow(data) {
-    this.updateRowData.emit(data);
-    console.log(data);
-  }
+
+  updateRow(data): void {
+        // send message to subscribers via observable subject
+        this.userService.sendMessage(data);
+    }
+
+  
 }
