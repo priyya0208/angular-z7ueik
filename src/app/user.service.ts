@@ -5,10 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-url = "http://jsonplaceholder.typicode.com"
+url = "https://reqres.in/api"
   constructor(private http: HttpClient) {  }
  
  getUser() {
-   return this.http.get(`${this.url}/users`);
+    return this.http.get(`${this.url}/users`);
+ }
+ postUser(data) {
+    return this.http.post(`${this.url}/register`,data);
  }
 }

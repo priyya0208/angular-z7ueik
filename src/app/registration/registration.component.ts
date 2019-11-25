@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from '../user.service';
+import { Http } from '@angular/http';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -7,12 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit() {
    
   }
   onClickSubmit(data) {
-      console.log(data.firstname+data.lastname);
+     this.userService.postUser(data)
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body", 
+                        val);
+        },
+        response => {
+            console.log("POST call in error", response);
+        },
+        () => {
+            console.log("The POST observable is now completed.");
+        });
    }
+
+   
 }
