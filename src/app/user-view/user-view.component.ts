@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { User } from '../user';
+import { UserService } from '../user.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 @Component({
@@ -8,11 +10,13 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./user-view.component.css']
 })
 export class UserViewComponent implements OnInit {
-
-  constructor(private http:Http) { }
+users: User[];
+  constructor(private userService : UserService) { }
 
   ngOnInit() {
-    this.http.get("http://jsonplaceholder.typicode.com/users").map((response)=>response.json()).subscribe((data) => console.log(data))
+    this.userService.getUser().subscribe((data:User[])=>{
+          this.users = data;
+    })
   }
 
 }
