@@ -15,7 +15,6 @@ export class UserViewComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser().subscribe((data)=>{
           this.users = data.data;
-          console.log(this.users);
     })    
   };
 

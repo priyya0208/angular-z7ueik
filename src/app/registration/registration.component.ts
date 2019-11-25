@@ -12,12 +12,13 @@ export class RegistrationComponent implements OnInit {
     message: any;
     subscription: Subscription;
 
-  constructor(private userService : UserService) { 
-    this.subscription = this.userService.getMessage().subscribe(message => { message = message;console.log("Message:::::::::::::",message) });
-  }
+  constructor(public userService : UserService) { 
+    
+  };
   
   ngOnInit() {
-    
+    this.subscription = this.userService.getMessage().subscribe(message => { this.message = JSON.stringify(message);
+    console.log("Message:::::::::::::",this.message.text) });
   }
   onClickSubmit(data) {
      this.userService.postUser(data)
@@ -28,11 +29,13 @@ export class RegistrationComponent implements OnInit {
         },
         response => {
             console.log("POST call in error", response);
+           
         },
         () => {
             console.log("The POST observable is now completed.");
         });
-   }
+     
+   };
 
-   
+  
 }
