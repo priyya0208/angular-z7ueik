@@ -16,6 +16,7 @@ users: User[];
   ngOnInit() {
     this.userService.getUser().subscribe((data:User[])=>{
           this.users = data;
+          console.log("data");
     })
   }
 
