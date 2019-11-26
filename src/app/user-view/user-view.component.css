@@ -4,6 +4,9 @@ table {
   width: 100%;
   border: 1px solid #ddd;
 }
+div {
+  margin-top:05%
+}
 
 th, td {
   text-align: left;
